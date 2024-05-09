@@ -61,11 +61,11 @@ function App() {
       let error = document.getElementById('blankErrorDiv')
       const addAlert = document.getElementById('addAlert')
       setAddAlready(true)
-      if (deleteAlready == false) {
+      if (deleteAlready === false) {
         addAlert.style.opacity = '1'
         addAlert.style.transform = 'translate(-20px,-15px)'
         addAlert.style.transition = '0.3s cubic-bezier(.75,.07,1,.97)'
-      } else if (deleteAlready == true) {
+      } else if (deleteAlready === true) {
         addAlert.style.opacity = '1'
         addAlert.style.transform = 'translate(-20px,-75px)'
         addAlert.style.transition = '0.3s cubic-bezier(.75,.07,1,.97)'
@@ -90,7 +90,7 @@ function App() {
     };
     setTimeout(() => {
       axiosData()
-    }, 10);
+    }, 25);
   }
 
   // Task remove button.
@@ -99,13 +99,14 @@ function App() {
     const newList = dataFilter.filter((d) => d.id !== id);
     axios.delete('http://localhost:3002/tasks/' + id)
     setDataFilter(newList)
+    setData(newList)
     const deleteAlert = document.getElementById('deleteAlert')
     setDeleteAlready(true)
-    if (addAlready == false) {
+    if (addAlready === false) {
       deleteAlert.style.opacity = '1'
       deleteAlert.style.transform = 'translate(-20px,-15px)'
       deleteAlert.style.transition = '0.3s cubic-bezier(.75,.07,1,.97)'
-    }else if(addAlready == true){
+    }else if(addAlready === true){
       deleteAlert.style.opacity = '1'
       deleteAlert.style.transform = 'translate(-20px,-75px)'
       deleteAlert.style.transition = '0.3s cubic-bezier(.75,.07,1,.97)'
@@ -119,22 +120,22 @@ function App() {
   }
 
 
-  // Button filters. (Sorun bunlarda)
+  // Button filters.
   const filterCompleted = () => {
     let filterCompleted = data.filter((data) => {
-      return data.isChecked == true
+      return data.isChecked === true
     })
     setDataFilter(filterCompleted)
   }
   const filterActive = () => {
     let filterActive = data.filter((data) => {
-      return data.isChecked == false
+      return data.isChecked === false
     })
     setDataFilter(filterActive)
   }
   const filterAll = () => {
     let filterActive = data.filter((data) => {
-      return data.isChecked == false || true
+      return data.isChecked === false || true
     })
     setDataFilter(filterActive)
   }
@@ -142,18 +143,26 @@ function App() {
   //  if post checked true, false or all
 
   const [checkbox, setCheckbox] = useState()
+  console.log('data',data)
   function checkList(id) {
 
-    setCheckbox(checkbox => !checkbox)
+    setCheckbox(!checkbox)
     const axiosData = async () => {
       const response = await axios.get('http://localhost:3002/tasks/' + id);
       axios.put('http://localhost:3002/tasks/' + id, {
         task: response.data.task,
         isChecked: checkbox,
       })
-      setData(response.data)
+      // console.log('response data' ,response.data)
+      setData(dataFilter)
+      console.log('data2', dataFilter)
     };
     axiosData()
+    const axiosFetch = async () =>{
+      const responsed = await axios.get('http://localhost:3002/tasks');
+      setData(responsed.data)
+      setDataFilter(responsed.data)
+    };axiosFetch()
   }
 
 

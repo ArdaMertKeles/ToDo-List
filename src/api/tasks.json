@@ -12,23 +12,13 @@
     },
     {
       "task": "Telefonunu tamir ettir.",
-      "isChecked": true,
+      "isChecked": false,
       "id": "6b56"
     },
     {
       "task": "Bütlerini ver.",
       "isChecked": true,
       "id": "40eb"
-    },
-    {
-      "task": "Finallerini geç.",
-      "isChecked": false,
-      "id": "9d61"
-    },
-    {
-      "task": "Yazılım yap.",
-      "isChecked": true,
-      "id": "d4ed"
     }
   ]
 }
