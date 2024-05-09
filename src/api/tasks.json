@@ -1,0 +1,34 @@
+{
+  "tasks": [
+    {
+      "task": "Spora git.",
+      "isChecked": false,
+      "id": "4"
+    },
+    {
+      "task": "Çöpleri dışarı çıkar.",
+      "isChecked": true,
+      "id": "2085"
+    },
+    {
+      "task": "Telefonunu tamir ettir.",
+      "isChecked": true,
+      "id": "6b56"
+    },
+    {
+      "task": "Bütlerini ver.",
+      "isChecked": true,
+      "id": "40eb"
+    },
+    {
+      "task": "Finallerini geç.",
+      "isChecked": false,
+      "id": "9d61"
+    },
+    {
+      "task": "Yazılım yap.",
+      "isChecked": true,
+      "id": "d4ed"
+    }
+  ]
+}
